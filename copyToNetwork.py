@@ -14,11 +14,12 @@ for line in fileobj:
     workStations.append(line.strip())
 
 for workStation in workStations:
-    networkDrive = '\\\\' + workStation + '\\c$\\plantillas'
+    networkDrive = '\\\\' + workStation + '\\NETWORKSHARE'
     winCMD = 'NET USE ' + networkDrive + ' /User:' + userName + ' ' + userPassword
-    subprocess.Popen(winCMD, stdout=subprocess.PIPE, shell=True)
+    process = subprocess.Popen(winCMD, stdout=subprocess.PIPE, shell=True)
+    process.wait()
     try:
-        shutil.copy2('f:\\notin\\plantillas\\normal.dotm',networkDrive+'\\normal.dotm')
-        print (Fore.GREEN + "Archivo copiado correcatente a: "+ workStation)
+        shutil.copy2('FILETOCOPY',networkDrive+'\\FILENAMEDESTINATION')
+        print (Fore.GREEN + "Archivo copiado correctamente a: "+ workStation)
     except IOError as e :
         print (Fore.RED + "Error copiando archivo. %s" % e)
