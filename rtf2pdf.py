@@ -46,4 +46,4 @@ for filename in os.listdir(folder_path):
     file_path = os.path.join(folder_path, filename)
 
     # Call Microsoft Word to convert the RTF file to PDF
-    subprocess.check_call([winword_path, "/q", "/n", "/mFilePrintDefault ", file_path])
+    subprocess.check_call([winword_path, "/q", "/n", "/mFileExportDefault", file_path, "pdf"])
