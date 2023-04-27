@@ -22,6 +22,8 @@ for workStation in workStations:
     process = subprocess.Popen(winCMD, stdout=subprocess.PIPE, shell=True)
     process.wait()
     try:
+        if os.path.exists(networkDrive+'\\' + os.path.basename(fileToCopy).split('/')[-1]):
+            os.remove(networkDrive+'\\' + os.path.basename(fileToCopy).split('/')[-1])
         shutil.copy2(fileToCopy,networkDrive+'\\' + os.path.basename(fileToCopy).split('/')[-1])
         print (Fore.GREEN + "Archivo copiado correctamente a: "+ workStation)
     except IOError as e :
