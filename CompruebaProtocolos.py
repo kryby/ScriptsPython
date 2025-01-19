@@ -73,6 +73,6 @@ def verificar_secuencia_escrituras(fecha_inicio, fecha_fin):
         print(f"Error de base de datos: {e}")
 
 # Ejemplo de uso
-fecha_inicio = datetime(2024, 12, 1)
+fecha_inicio = datetime(2024, 1, 1)
 fecha_fin = datetime(2024, 12, 31)
 verificar_secuencia_escrituras(fecha_inicio, fecha_fin)
